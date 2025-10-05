@@ -1,5 +1,5 @@
 def adicionar_item(matriz): #def com a opção de adicionar produtos
-    produto = []
+    produto = [] #variável temporária que vai armazenar os itens para adicionar na matriz
     nome = input("Digite o nome do produto: ")
     produto.append(nome)
     categoria = input("Digite a categoria do produto: ")
@@ -18,10 +18,10 @@ def visualizar_item(matriz): #def que mostra todos os produtos cadastrados na ma
         print("Nenhum item cadastrado.")
     else:
         for i, produto in enumerate(matriz):
-            if produto[2] < 5:
-                print(f"Produto {i+1} Com Estoque Baixo - Nome: {produto[0]}, Categoria: {produto[1]}, Quantidade: {produto[2]}, Preço: {produto[3]}, Valor Total: {produto[4]}")
-            else:
-                print(f"Produto {i+1} - Nome: {produto[0]}, Categoria: {produto[1]}, Quantidade: {produto[2]}, Preço: {produto[3]}, Valor Total: {produto[4]}")
+                if produto[2] < 5:
+                    print(f"Produto {i+1} Com Estoque Baixo - Nome: {produto[0]}, Categoria: {produto[1]}, Quantidade: {produto[2]}, Preço: {produto[3]}, Valor Total: {produto[4]}")
+                else:
+                    print(f"Produto {i+1} - Nome: {produto[0]}, Categoria: {produto[1]}, Quantidade: {produto[2]}, Preço: {produto[3]}, Valor Total: {produto[4]}")
 
 def editar_item(matriz): #def que edita um produto na matriz
     nome_procurado = input("Digite o nome do produto que você deseja editar: ")
