@@ -11,7 +11,7 @@ def adicionar_item(matriz): #def com a opção de adicionar produtos
     matriz["Valor Total"].append(valor_tot)
     return matriz
 
-def visualizar_item(matriz): #def que mostra todos os produtos cadastrados na matriz
+def visualizar_item(matriz): #def que mostra todos os produtos cadastrados no dicionário
     if not matriz:
         print("Nenhum item cadastrado.")
     else:
@@ -23,13 +23,11 @@ def visualizar_item(matriz): #def que mostra todos os produtos cadastrados na ma
             preco_visualizador = matriz["Preço"][i]
             valor_total_visualizador = matriz["Valor Total"][i]
             if quantidade_visualizador < 5:
-                print("**Estoque Baixo**")
-                print(f"Produto {i+1}, Nome: {nome_visualizador}, Categoria: {categoria_visualizador}, Quantidade: {quantidade_visualizador}, Preço: R${preco_visualizador}, Valor Total: R$ {valor_total_visualizador}")
+                print(f"**Estoque Baixo** Produto {i+1}, Nome: {nome_visualizador}, Categoria: {categoria_visualizador}, Quantidade: {quantidade_visualizador}, Preço: R${preco_visualizador}, Valor Total: R$ {valor_total_visualizador}")
             else:
                 print(f"Produto {i+1}, Nome: {nome_visualizador}, Categoria: {categoria_visualizador}, Quantidade: {quantidade_visualizador}, Preço: R${preco_visualizador}, Valor Total: R$ {valor_total_visualizador}")
 
-
-def editar_item(matriz): #def que edita um produto na matriz
+def editar_item(matriz): #def que edita um produto no dicionário
     if not matriz:
         print("Nenhum item cadastrado")
     else:
@@ -50,7 +48,7 @@ def editar_item(matriz): #def que edita um produto na matriz
                 print(f"Não foi encontrado nenhum produto com o nome de {nome_procurado}.")
             return matriz
 
-def excluir_item(matriz): #def para excluir um produto na matriz
+def excluir_item(matriz): #def para excluir um produto no dicionário
     nome_procurado = input("Digite o nome do produto que você deseja excluir: ")
     encontrado = False
     for i in range(len(matriz)):
@@ -62,7 +60,7 @@ def excluir_item(matriz): #def para excluir um produto na matriz
             matriz["Valor Total"].pop(i)
             print(f"Produto '{nome_procurado}' excluído com sucesso!")
             encontrado = True
-            break # Interrompe o loop
+            break #interrompe o loop
     if not encontrado:
         print(f"Não foi encontrado nenhum produto com o nome de {nome_procurado}.")
     return matriz
