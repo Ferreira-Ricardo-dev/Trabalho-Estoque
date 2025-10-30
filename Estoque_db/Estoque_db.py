@@ -30,8 +30,16 @@ def inicializacao():
 
 def adicionar_item(nome, categoria, unidade, quantidade, valor_unit): #def com a opção de adicionar produtos
     conn, cursor = inicializacao()
-    insert = ("""INSERT INTO estoque (nome, categoria, unidade, quantidade, valor_unit) VALUES (?, ?, ?, ?, ?)""")
-    cursor.execute(insert, (nome, categoria, unidade, quantidade, valor_unit))
+    insert_estoque = ("""INSERT INTO estoque (nome, categoria, unidade, quantidade, valor_unit) VALUES (?, ?, ?, ?, ?)""")
+    cursor.execute(insert_estoque, (nome, categoria, unidade, quantidade, valor_unit))
+    cursor.execute("SELECT id FROM estoque WHERE nome = ?", (nome, ))
+    id_m = cursor.fetchone()
+    id = id_m[0]
+    insert_movimentos = ("INSERT INTO movimentos (item_id, tipo, datahora, quantidade_movimentada, quantidade_final) VALUES(?, ?, ?, ?, ?)")
+    tipo = "Adição"
+    data_n = datetime.now()
+    datahora = data_n.strftime("%d/%m%Y, %H:%M;%S")
+    cursor.execute(insert_movimentos, (id, tipo, datahora, quantidade, quantidade))
     print(f"Produto {nome} adicionado com sucesso!")
     conn.commit()
     conn.close()
